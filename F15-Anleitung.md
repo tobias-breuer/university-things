@@ -1,5 +1,5 @@
 # F15 - Anleitung: Messwerterfassung und Prozesssteuerung
-##### Sven Brieden 13.10.2018
+##### Sven Brieden 22.10.2018
 
 ## Vorwort zum Versuch
 "
@@ -15,8 +15,8 @@ Ziel des heutigen Versuchs wird es sein, Ihnen solche Prozesse an diversen Beisp
 - Theoretische Grundlagen
   - Stromkreis
   - Programmierung
+    - Datentypen
     - Kontrollstrukturen
-    - Datenstruktur/(Dateisystem)
   - Thermoelemente
   - Hardware für Prozesssteuerung
     - PC, Raspy, Ardoino, Hardwareansteuerung
@@ -30,6 +30,30 @@ Ziel des heutigen Versuchs wird es sein, Ihnen solche Prozesse an diversen Beisp
 - Literatur
 
 ## Programmierung
+### Datentypen
+Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen mit der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
+
+Bei der Wahl des richtigen Datentyps spielen folgende Überlegungen eine wichtige Rolle:
+    - Was möchte ich speichern oder verarbeiten?
+        - Zeichen
+        - Text
+        - Zahl
+        - Kommazahl
+
+Datentypen haben unterschiedliche Verwendungsformen. So kann der Datentyp ganze Zahl z.B. keine Buchstaben und keine Kommazahlen speichern, sondern nur ganze Zahlen. Datentypen haben unterschiedliche Wertebereiche. Der Wertebereich sagt aus, welche Zahlen dieser Datentyp speichern kann. Je nach dem, ob man eher kleine Zahlen bis 65535, etwas größere bis 4.294.967.295 oder ganz große Zahlen mit 20 Stellen speichern muss, wird der Datentyp entsprechend ausgesucht.
+
+#### Ganze Zahlen: int
+Mit dem Schlüsselwort int erstellen wir Variablen gewöhnlicher Größe. Diese Variante wird auch am Meisten verwendet. Laut Standard hat dieser Datentyp mindestens 16 Bit, bei einem 32-Bit Prozessor jedoch 32 Bit. Daraus ergibt sich ein Wertebereich von -2.147.483.647 bis +2.147.483.647, bei fehlendem Vorzeichen von 0 bis 4.294.967.295.
+
+#### Kommazahlen
+Wie bei den ganzen Zahlen gibt es bei den Kommazahlen, auch Fließkommazahlen genannt, unterschiedliche Varianten – je nach benötigter Größe:
+    - float mit 32 Bit
+    - double mit 64 Bit
+    - long double mit 80 Bit
+
+Die genauen Grenzen der Wertebereiche sind von System zu System unterschiedlich.
+
+Das Deklarieren dieser Variablen erfolgt analog. Das Schlüsselwort unsigned kann hier ebenfalls verwendet werden. Bei der Zuweisung können wir jetzt natürlich auch Kommazahlen verwenden, wobei unser deutsches Komma dort immer mit einem Punkt dargestellt wird.
 
 ### Kontrollstrukturen
 Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra beeinflusst.
@@ -54,7 +78,7 @@ Eine Schleife (auch „Wiederholung“ oder englisch loop) wiederholt einen Anwe
 
 Schleifen können beliebig verschachtelt werden: Innerhalb des Schleifenkörpers der äußeren Schleife befindet sich wiederum eine Schleife, sie liegt innen, oder unter der äußeren Schleife.
 
-Prinzipiell werden folgende Typen von Schleifen unterschieden
+Prinzipiell werden folgende Typen von Schleifen unterschieden:
  - kopfgesteuerte Schleife: Bei dieser Schleife wird eine Bedingung geprüft, mit der vorher entschieden wird, ob der Schleifenrumpf (Schleifeninhalt) ausgeführt wird (meist mit WHILE = solange eingeleitet).
 
  - Die nachprüfende oder fußgesteuerte Schleife: Bei dieser Schleife wird nach dem Durchlauf des Schleifenrumpfes (Schleifeninhalts) eine Bedingung überprüft, ob der Schleifenrumpf nochmal ausgeführt wird (meist als Konstrukt DO…WHILE = „ausführen … solange“ oder REPEAT…UNTIL = „wiederholen … bis“).
@@ -82,19 +106,19 @@ Für diesen Versuch ist es ausreichend die Zählschleife und die kopfgesteuerte 
     ```
 
   - Bei einer kopfgesteuerten Schleife erfolgt die Abfrage der Bedingung, bevor der Schleifenrumpf ausgeführt wird, also am Kopf des Konstruktes. Eine logische Operation kann beispielsweise sein: (x > 4) Solange diese Bedingung wahr ist, werden die Anweisungen innerhalb der Schleife ausgeführt. Wird der Inhalt der logischen Operation nicht im Schleifenrumpf verändert, ist diese Kontrollstruktur meist nicht die richtige, weil diese Schleife sonst kein einziges Mal durchlaufen wird oder unendlich lang läuft.
-    Beispielcode in C:
-    ``` C
-    float fahr, celsius;
-    float max, step;
-    ...
-    while (celsius < max) {
-      fahr = 9.0/5.0*celsius + 32.0;
-      printf( "%5.1f °C sind %5.1f F\n", celsius, fahr);
-      celsius = celsius + step;
-    }
-    ```
+  Beispielcode in C:
+  ``` C
+  float fahr, celsius;
+  float max, step;
+  ...
+  while (celsius < max) {
+    fahr = 9.0/5.0*celsius + 32.0;
+    printf( "%5.1f °C sind %5.1f F\n", celsius, fahr);
+    celsius = celsius + step;
+  }
+  ```
 
-Schleifenabbruch im Sonderfall
+#### Schleifenabbruch im Sonderfall
 
 In Fällen, die schwierig als Schleifenbedingung zu fassen sind, kann eine Schleife (aus dem Schleifenkörper heraus) meist abgebrochen werden.
 Meist gibt es einen Befehl zum Gesamt-Abbruch der Schleife, das Programm wird dann mit der ersten Anweisung nach der Schleife fortgesetzt.
@@ -106,10 +130,49 @@ while (1) {
 
   if(input <= 0)
   {
-      printf("Nicht positiver Input, das Programm bricht ab");
+      printf("Nicht positiver Input: Das Programm wird beendet");
       break;
   }
   printf("Die Wurzel von %lf ist %lf \n",input, sqrt(input));
 }
 ```
+
+# Übungsaufgaben:
+
+In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben:
+Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmierevorkenntniss. Ein möglicher online compiler ist: https://onlinegdb.com/
+
+## Aufgabe 1:
+"Der Spieler soll eine im Programm festgelegte Zahl erraten. Dazu stehen ihm beliebig viele Versuche zur VerfÃ¼gung. Nach jedem Versuch informiert ihn das Programm darÃ¼ber, ob die geratene Zahl zu groÃŸ, zu klein oder genau richtig gewesen ist. Sobald der Spieler die Zahl erraten hat, gibt das Programm die Anzahl der Versuche aus und wird beendet" 
+von http://python.daniel-co.de/content/praxis-zahlenraten-1.html 
+
+## Aufgabe 2:
+Bildschirmausgabe mit Dreieck, Raute
+
+Erstelle ein Programm, das eine Raute auf dem Bildschirm ausgibt. Die Raute wird mittels *-Zeichen dargestellt. Die Breite der Raute ist dynamisch und kann mit einer Zahl, die eingegeben wird, bestimmt werden. Für den Anfang kann auch nur ein Dreieck ausgegeben werden. Beispiel-Ausgabe:
+
+ 
+``` Terminal
+
+Eingabe Rauten-Breite: 5
+
+  *
+ ***
+*****
+ ***
+  *
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
 
