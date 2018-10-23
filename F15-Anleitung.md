@@ -31,7 +31,7 @@ Ziel des heutigen Versuchs wird es sein, Ihnen solche Prozesse an diversen Beisp
 
 ## Programmierung
 ### Datentypen
-Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen mit der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
+Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen bei der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
 
 Bei der Wahl des richtigen Datentyps spielen folgende Überlegungen eine wichtige Rolle:
     - Was möchte ich speichern oder verarbeiten?
@@ -51,15 +51,15 @@ Wie bei den ganzen Zahlen gibt es bei den Kommazahlen, auch Fließkommazahlen ge
     - double mit 64 Bit
     - long double mit 80 Bit
 
-Die genauen Grenzen der Wertebereiche sind von System zu System unterschiedlich.
+Die genauen Grenzen der Wertebereiche sind von System zu System unterschiedlich. !!Beispiele angeben!!
 
-Das Deklarieren dieser Variablen erfolgt analog. Das Schlüsselwort unsigned kann hier ebenfalls verwendet werden. Bei der Zuweisung können wir jetzt natürlich auch Kommazahlen verwenden, wobei unser deutsches Komma dort immer mit einem Punkt dargestellt wird.
+Das Deklarieren dieser Variablen erfolgt analog. !! Analog zu was? Oben ist kein Beispiel. Was heißt überhaupt "Deklarieren"? !! Das Schlüsselwort unsigned kann hier ebenfalls verwendet werden. Bei der Zuweisung können wir jetzt natürlich auch Kommazahlen verwenden, wobei unser deutsches Komma dort immer mit einem Punkt dargestellt wird.
 
 ### Kontrollstrukturen
 Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra beeinflusst.
 
 #### Verzweigungen
-Eine Verzweigung legt fest, welcher von zwei (oder mehr) Programmabschnitten, abhängig von einer (oder mehreren) Bedingungen, ausgeführt wird. Eine bedingte Anweisung besteht aus einer Bedingung und einem Codeabschnitt, der wiederum aus einer oder mehreren Anweisungen besteht. Wird bei der Programmausführung die bedingte Anweisung erreicht, dann wird erst die Bedingung ausgewertet, und falls diese zutrifft (und nur dann) wird anschließend der Codeabschnitt ausgeführt. Danach wird in jedem Fall die Programmausführung mit den auf die bedingte Anweisung folgenden Anweisungen fortgesetzt.
+Eine Verzweigung legt fest, welcher von zwei (oder mehr) Programmabschnitten, abhängig von einer (oder mehreren) Bedingungen, ausgeführt wird. Eine bedingte Anweisung besteht aus einer Bedingung und einem Codeabschnitt, der wiederum aus einer oder mehreren Anweisungen besteht. Wird bei der Programmausführung die bedingte Anweisung erreicht, dann wird erst die Bedingung ausgewertet, und falls diese zutrifft (und nur dann) wird anschließend der Codeabschnitt ausgeführt. !! Bitte Beispiel in Klartext erläutern! (gerne mit Bezug zum Alltag) Damit es nicht so "technisch" ist !! Danach wird in jedem Fall die Programmausführung mit den auf die bedingte Anweisung folgenden Anweisungen fortgesetzt.
 
 Beispielcode in C:
 ``` C
@@ -75,6 +75,7 @@ In vielen Programmiersprachen gibt es auch mehrfache Verzweigungen, auch Fallunt
 
 #### Schleifen
 Eine Schleife (auch „Wiederholung“ oder englisch loop) wiederholt einen Anweisungs-Block – den sogenannten Schleifenrumpf oder Schleifenkörper –, solange die Schleifenbedingung als Laufbedingung gültig bleibt bzw. als Abbruchbedingung nicht eintritt. Schleifen, deren Schleifenbedingung immer zur Fortsetzung führt oder die keine Schleifenbedingung haben, sind Endlosschleifen.
+!! Beispiel angeben (in Klartext) "Wieso ist das nötig?" !!
 
 Schleifen können beliebig verschachtelt werden: Innerhalb des Schleifenkörpers der äußeren Schleife befindet sich wiederum eine Schleife, sie liegt innen, oder unter der äußeren Schleife.
 
@@ -117,10 +118,11 @@ Für diesen Versuch ist es ausreichend die Zählschleife und die kopfgesteuerte 
     celsius = celsius + step;
   }
   ```
+!! Erläuterung was der Code tut !! 
 
 #### Schleifenabbruch im Sonderfall
 
-In Fällen, die schwierig als Schleifenbedingung zu fassen sind, kann eine Schleife (aus dem Schleifenkörper heraus) meist abgebrochen werden.
+In Fällen, die schwierig als Schleifenbedingung zu fassen sind, kann eine Schleife (aus dem Schleifenkörper heraus) meist abgebrochen werden. !! Hinweis auf den Befehl "break" !!
 Meist gibt es einen Befehl zum Gesamt-Abbruch der Schleife, das Programm wird dann mit der ersten Anweisung nach der Schleife fortgesetzt.
 Beispielcode in C:
 ``` C
@@ -139,8 +141,8 @@ while (1) {
 
 # Übungsaufgaben:
 
-In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben:
-Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmierevorkenntniss. Ein möglicher online compiler ist: https://onlinegdb.com/
+In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben zur Vorbereitung:
+Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmiervorkenntniss. Ein möglicher Online-Compiler ist (d.h. es muss keine besondere Software auf dem Rechner installiert werden): https://onlinegdb.com/
 
 ## Aufgabe 1:
 "Der Spieler soll eine im Programm festgelegte Zahl erraten. Dazu stehen ihm beliebig viele Versuche zur VerfÃ¼gung. Nach jedem Versuch informiert ihn das Programm darÃ¼ber, ob die geratene Zahl zu groÃŸ, zu klein oder genau richtig gewesen ist. Sobald der Spieler die Zahl erraten hat, gibt das Programm die Anzahl der Versuche aus und wird beendet" 
@@ -162,6 +164,10 @@ Eingabe Rauten-Breite: 5
  ***
   *
 ```
+
+!! Bezug auf Labview ? !!
+
+!! Einbauen der Aufgaben während der Versuchsdurchführung (Orientierung an alter Anleitung) !!
 
 
 
