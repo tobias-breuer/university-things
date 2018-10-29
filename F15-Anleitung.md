@@ -31,7 +31,7 @@ Ziel des heutigen Versuchs wird es sein, Ihnen solche Prozesse an diversen Beisp
 
 ## Programmierung
 ### Datentypen
-Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen mit der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
+Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen bei der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
 
 Bei der Wahl des richtigen Datentyps spielen folgende Überlegungen eine wichtige Rolle:
     - Was möchte ich speichern oder verarbeiten?
@@ -51,19 +51,34 @@ Wie bei den ganzen Zahlen gibt es bei den Kommazahlen, auch Fließkommazahlen ge
     - double mit 64 Bit
     - long double mit 80 Bit
 
-Die genauen Grenzen der Wertebereiche sind von System zu System unterschiedlich.
+Die genauen Grenzen der Wertebereiche sind von System zu System unterschiedlich. Für diesen Versuch ist die Genauigkeit und der Wertebereich einer float als Kommazahl ausreichend. Der Wertebereich lässt sich durch die betragsmäßig größte Zahl von 3\*10^38 und einer Genauigkeit bis zur 7 Dezimalstelle schreiben.
 
-Das Deklarieren dieser Variablen erfolgt analog. Das Schlüsselwort unsigned kann hier ebenfalls verwendet werden. Bei der Zuweisung können wir jetzt natürlich auch Kommazahlen verwenden, wobei unser deutsches Komma dort immer mit einem Punkt dargestellt wird.
+
+#### Deklaration von Variabeln
+``` C
+// Variablen deklarieren
+int zahl, andere_integer;
+float kleine_zahl;
+...
+```
+Mit der Deklaration bennenen wir eine Variable und machen diese dem Compiler bekannt. Der Compiler ist das Programm, welches den Quellcode, also den von uns in der Programmiersprache C geschrieben Code, in ein direkt ausführbars Programm übersetzt. D.h. der Compiler weiß nun, ob wir uns im Laufe unseres Programms beim Eintippen des Variablennames vertippt haben. Da jeder Variablenname eines Datentyps eindeutig sein muss, kann der Compiler auch den Fehler abfangen, wenn versucht wird, zwei Variablen mit dem gleichen Typ und gleichen Namen zu deklarieren.
+
 
 ### Kontrollstrukturen
-Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra beeinflusst.
+Normalerweise wird Code Zeile für Zeile, von oben nach unten, ausgeführt. Manchmal möchte man aber eine Zeile - oder einen ganzen Block von Zeilen - aber nur unter einer bestimmten Bedingung durchführen. Alternativ möchte man den selben Block von Zeilen mehrfach hintereinander ausführen. Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra beeinflusst.
 
 #### Verzweigungen
-Eine Verzweigung legt fest, welcher von zwei (oder mehr) Programmabschnitten, abhängig von einer (oder mehreren) Bedingungen, ausgeführt wird. Eine bedingte Anweisung besteht aus einer Bedingung und einem Codeabschnitt, der wiederum aus einer oder mehreren Anweisungen besteht. Wird bei der Programmausführung die bedingte Anweisung erreicht, dann wird erst die Bedingung ausgewertet, und falls diese zutrifft (und nur dann) wird anschließend der Codeabschnitt ausgeführt. Danach wird in jedem Fall die Programmausführung mit den auf die bedingte Anweisung folgenden Anweisungen fortgesetzt.
+Eine Verzweigung legt fest, welcher von zwei (oder mehr) Programmabschnitten, abhängig von einer (oder mehreren) Bedingungen, ausgeführt wird. Eine bedingte Anweisung besteht aus einer Bedingung und einem Codeabschnitt, der wiederum aus einer oder mehreren Anweisungen besteht. Wird bei der Programmausführung die bedingte Anweisung erreicht, dann wird erst die Bedingung ausgewertet, und falls diese zutrifft (und nur dann) wird anschließend der Codeabschnitt ausgeführt. Ein alltägliches Beispiel wäre dafür die Abfrage eins Passwort: 
+    Wenn(Passwort richtig) 
+    - dann: öffne das Schloss; 
+    - sonst: schlage Alarm;
+Danach wird in jedem Fall die Programmausführung mit den auf die bedingte Anweisung folgenden Anweisungen fortgesetzt.
 
 Beispielcode in C:
 ``` C
-const char *x;
+int x;
+x = Terminaleingabe()
+    
 //if-else-Konstrukt
 if (zahl == 5)
   x = "Zahl gleich 5";
@@ -75,7 +90,9 @@ In vielen Programmiersprachen gibt es auch mehrfache Verzweigungen, auch Fallunt
 
 #### Schleifen
 Eine Schleife (auch „Wiederholung“ oder englisch loop) wiederholt einen Anweisungs-Block – den sogenannten Schleifenrumpf oder Schleifenkörper –, solange die Schleifenbedingung als Laufbedingung gültig bleibt bzw. als Abbruchbedingung nicht eintritt. Schleifen, deren Schleifenbedingung immer zur Fortsetzung führt oder die keine Schleifenbedingung haben, sind Endlosschleifen.
-
+So kann man das Betriebssystem eines Computers oder Handys als Endlosschleife sehen, die immer weiter läuft, solange man nicht mit dem Befehl des Herunterfahrens die Schleife beendet. Für den Versuch werden wir Schleifen in zwei Variationen benutzen:
+    - um den selben Code mit unterschiedlichen Werten auszuführen: Stelle die Leistung der Lampe bei jedem Durchlauf höher
+    - um den selben Code wiederholt zu unterschiedlichen Zeiten auszuführen: Schreibe alle 5 Sekunden die aktuelle Temperatur in eine Datei.
 Schleifen können beliebig verschachtelt werden: Innerhalb des Schleifenkörpers der äußeren Schleife befindet sich wiederum eine Schleife, sie liegt innen, oder unter der äußeren Schleife.
 
 Prinzipiell werden folgende Typen von Schleifen unterschieden:
@@ -108,19 +125,21 @@ Für diesen Versuch ist es ausreichend die Zählschleife und die kopfgesteuerte 
   - Bei einer kopfgesteuerten Schleife erfolgt die Abfrage der Bedingung, bevor der Schleifenrumpf ausgeführt wird, also am Kopf des Konstruktes. Eine logische Operation kann beispielsweise sein: (x > 4) Solange diese Bedingung wahr ist, werden die Anweisungen innerhalb der Schleife ausgeführt. Wird der Inhalt der logischen Operation nicht im Schleifenrumpf verändert, ist diese Kontrollstruktur meist nicht die richtige, weil diese Schleife sonst kein einziges Mal durchlaufen wird oder unendlich lang läuft.
   Beispielcode in C:
   ``` C
-  float fahr, celsius;
-  float max, step;
-  ...
-  while (celsius < max) {
-    fahr = 9.0/5.0*celsius + 32.0;
-    printf( "%5.1f °C sind %5.1f F\n", celsius, fahr);
-    celsius = celsius + step;
+  int zufallszahl, rateversuch, anzahl;
+  zufallszahl = random_zahl();
+  anzahl = 0;
+  while (zufallszahl != rateversuch) {
+    rateversuch = random_zahl();
+    anzahl = anzahl + 1;
   }
+  printf( "Die Zufallszahl lautet: %d und wurde nach %d Versuchen gefunden", rateversuch, anzahl);
   ```
+In diesem Beispiel wird nach der Deklaration eine Zufallszahl zufällig ausgewählt. "!=" ist der Ungleich Operator und gibt "wahre Aussage" zurück, wenn zufallszahl und rateversuch ungleich sind. Dadurch wird die Schleife so lange wiederholt, bis rateversuch gleich zufallszahl ist. Bei jedem Durchlauf wird weiterhin die Zählvariabel "anzahl" um eins erhöht. Die Bildschirausgabe erscheint erst, wenn die Schleifenbedingung nicht erfüllt wurde.
+
 
 #### Schleifenabbruch im Sonderfall
 
-In Fällen, die schwierig als Schleifenbedingung zu fassen sind, kann eine Schleife (aus dem Schleifenkörper heraus) meist abgebrochen werden.
+In Fällen, die schwierig als Schleifenbedingung zu fassen sind, kann eine Schleife (aus dem Schleifenkörper heraus) meist abgebrochen werden. Mit dem Schlüsselwort "break" können wir zu jeder Zeit eine Schleife verlassen, ohne auf den Kontrollpunkt warten zu müssen.
 Meist gibt es einen Befehl zum Gesamt-Abbruch der Schleife, das Programm wird dann mit der ersten Anweisung nach der Schleife fortgesetzt.
 Beispielcode in C:
 ``` C
@@ -139,8 +158,8 @@ while (1) {
 
 # Übungsaufgaben:
 
-In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben:
-Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmierevorkenntniss. Ein möglicher online compiler ist: https://onlinegdb.com/
+In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben zur Vorbereitung:
+Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmiervorkenntniss. Ein möglicher Online-Compiler ist (d.h. es muss keine besondere Software auf dem Rechner installiert werden): https://onlinegdb.com/
 
 ## Aufgabe 1:
 "Der Spieler soll eine im Programm festgelegte Zahl erraten. Dazu stehen ihm beliebig viele Versuche zur VerfÃ¼gung. Nach jedem Versuch informiert ihn das Programm darÃ¼ber, ob die geratene Zahl zu groÃŸ, zu klein oder genau richtig gewesen ist. Sobald der Spieler die Zahl erraten hat, gibt das Programm die Anzahl der Versuche aus und wird beendet" 
@@ -163,16 +182,19 @@ Eingabe Rauten-Breite: 5
   *
 ```
 
+# LabVIEW
+LabVIEW ist ein grafisches Programmiersystem von National Instruments.
+Durch die Hauptanwendungsgebiete der Mess-, Regel- und Automatisierungstechnik wird dieses Werkzeug in der Industrie und in der Wissenschaft genutzt. Die Programmierung erfolgt mit einer grafischen Programmiersprache, nach dem Datenfluss-Modell.
+
+Für einen kurzen Überblick können Sie folgendes Video gucken:
+https://www.youtube.com/watch?v=1umq5KqQWMo
 
 
+# Todo zur Fertigstellung der Anleitung
+- kurze Erklärung Raspberry-Pi
+- kurze Erklärung DaQ-Pad
+- kurze Erklärung temperaturabhängige Widerstände
+- Implementierungen eines Regelungs-Algorithmus
 
-
-
-
-
-
-
-
-
-
-
+__!! Einbauen der Aufgaben während der Versuchsdurchführung (Orientierung an alter Anleitung) !!__???
+Ich meine die alte Anleitung kann als Platzanleitung fast unverändert weiter genutzt werden. Zusätzlich gibt es dann noch dieses Dokument zur Vorbereitung. 
