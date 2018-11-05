@@ -26,6 +26,10 @@ Ziel des heutigen Versuchs wird es sein, Ihnen solche Prozesse an diversen Beisp
   - Integralregelung
 - Multifunktions-I/O-Gerät
 
+Bitte noch Hinweis auf die Logik im Versuch bzw. Messwerterfassung allgemein gemäß
+
+Physikalischer Prozess --> Sensor --> Signalaufbereitung --> ADU --> Computer
+
 ## Programmierung
 ### Datentypen
 Im Folgenden werden die elementaren Datentypen vorgestellt, welche wir in der Programmierung, im Besonderen bei der Arbeit mit Variablen brauchen. Datentypen dienen der besseren Ordnung in einem Programm und ermöglichen eine effektive Nutzung des Speicherplatzes.
@@ -60,8 +64,10 @@ float kleine_zahl;
 ```
 Mit der Deklaration bennenen wir eine Variable und machen diese dem Compiler bekannt. Der Compiler ist das Programm, welches den Quellcode, also den von uns in der Programmiersprache C geschrieben Code, in ein direkt ausführbars Programm übersetzt. D.h. der Compiler weiß nun, ob wir uns im Laufe unseres Programms beim Eintippen des Variablennames vertippt haben. Da jeder Variablenname eines Datentyps eindeutig sein muss, kann der Compiler auch den Fehler abfangen, wenn versucht wird, zwei Variablen mit dem gleichen Typ und gleichen Namen zu deklarieren.
 
+Brauchen wir der Vollständigkeit halber einen Hinweis auf Wertezuweisung, also bspw. zahl = 5; zahl = zahl + 8; ?
+
 ### Kontrollstrukturen
-Normalerweise wird Code Zeile für Zeile, von oben nach unten, ausgeführt. Manchmal möchte man aber eine Zeile - oder einen ganzen Block von Zeilen - aber nur unter einer bestimmten Bedingung durchführen. Alternativ möchte man den selben Block von Zeilen mehrfach hintereinander ausführen. Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra beeinflusst.
+Normalerweise wird Code Zeile für Zeile, von oben nach unten, ausgeführt. Manchmal möchte man aber eine Zeile - oder einen ganzen Block von Zeilen - aber nur unter einer bestimmten Bedingung durchführen. Alternativ möchte man den selben Block von Zeilen mehrfach hintereinander ausführen. Kontrollstrukturen (Steuerkonstrukte) sind Anweisungen um den Ablauf eines Computerprogramms zu steuern. Eine Kontrollstruktur ist entweder eine Verzweigung oder eine Schleife. Meist wird ihre Ausführung über logische Ausdrücke der booleschen Algebra ! Datentyp bool nicht erläutert ! beeinflusst.
 
 #### Verzweigungen
 Eine Verzweigung legt fest, welcher von zwei (oder mehr) Programmabschnitten, abhängig von einer (oder mehreren) Bedingungen, ausgeführt wird. Eine bedingte Anweisung besteht aus einer Bedingung und einem Codeabschnitt, der wiederum aus einer oder mehreren Anweisungen besteht. Wird bei der Programmausführung die bedingte Anweisung erreicht, dann wird erst die Bedingung ausgewertet, und falls diese zutrifft (und nur dann) wird anschließend der Codeabschnitt ausgeführt. Ein alltägliches Beispiel wäre dafür die Abfrage eins Passwort: 
@@ -89,7 +95,7 @@ Eine Schleife (auch „Wiederholung“ oder englisch loop) wiederholt einen Anwe
 So kann man das Betriebssystem eines Computers oder Handys als Endlosschleife sehen, die immer weiter läuft, solange man nicht mit dem Befehl des Herunterfahrens die Schleife beendet. Für den Versuch werden wir Schleifen in zwei Variationen benutzen:
     - um den selben Code mit unterschiedlichen Werten auszuführen: Stelle die Leistung der Lampe bei jedem Durchlauf höher
     - um den selben Code wiederholt zu unterschiedlichen Zeiten auszuführen: Schreibe alle 5 Sekunden die aktuelle Temperatur in eine Datei.
-Schleifen können beliebig verschachtelt werden: Innerhalb des Schleifenkörpers der äußeren Schleife befindet sich wiederum eine Schleife, sie liegt innen, oder unter der äußeren Schleife.
+Schleifen (sowie auch Verzweigungen) können beliebig verschachtelt werden: Innerhalb des Schleifenkörpers der äußeren Schleife befindet sich wiederum eine Schleife, sie liegt innen, oder unter der äußeren Schleife.
 
 Prinzipiell werden folgende Typen von Schleifen unterschieden:
  - kopfgesteuerte Schleife: Bei dieser Schleife wird eine Bedingung geprüft, mit der vorher entschieden wird, ob der Schleifenrumpf (Schleifeninhalt) ausgeführt wird (meist mit WHILE = solange eingeleitet).
@@ -156,6 +162,7 @@ while (1) {
 
 In diesem Versuch werden Messwerterfassung und Prozesssteuerung durch kleine Programme verdeutlicht, die zur Versuchsdurchführung selbständig geschrieben werden. Es ist ausreichend die oben erklärten Grundstrukturen verstanden zu haben. Zwei kleine Übungsaufgaben zur Vorbereitung:
 Wenn Sie diese Aufgabe lösen konnt, habt Sie die nötigen Programmiervorkenntniss. Ein möglicher Online-Compiler ist (d.h. es muss keine besondere Software auf dem Rechner installiert werden): https://onlinegdb.com/
+Bei Fragen können (und sollen) Sie gerne vorab den Versuchsbetreuer kontaktieren.
 
 ### Aufgabe 1:
 "Der Spieler soll eine im Programm festgelegte Zahl erraten. Dazu stehen ihm beliebig viele Versuche zur VerfÃ¼gung. Nach jedem Versuch informiert ihn das Programm darÃ¼ber, ob die geratene Zahl zu groÃŸ, zu klein oder genau richtig gewesen ist. Sobald der Spieler die Zahl erraten hat, gibt das Programm die Anzahl der Versuche aus und wird beendet" 
@@ -220,5 +227,5 @@ Am Ende wird - wie bei dem P-Anteil - der integrale Wert mit einer Konstanten mu
 Zur Datenerfassung und Generierung von Steuersignalen wird ein Data Acqusition Modul benutzt. Es ist per USB an den PC angeschlossene und wird mit LabVIEW programmiert. Es stellt eine direkte Schnittstelle zum Messen und Stellen von Analog‑ und Digitalsignal am PC dar. Es erlaubt Livemessung von nahezu beliebiger Messsignale. Dabei werden analoge Spannungssignale als Eingang von ± 10 V erwartet. Dieses Signal kann in einer Rate von 10 kHz und einer Auflösung von 14 Bit (d.h. ca. 0,6 mV) gemessen werden.
 Die Analoge Ausgänge werden in diesem Versuch Ansteuerung weiterer Geräte genutzt. 
 
-
+! Noch Hinweise zu den konkret genutzten Geräten im Versuch (bspw. den Netzteilen etc.) !
 
